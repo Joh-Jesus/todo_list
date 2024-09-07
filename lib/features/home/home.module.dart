@@ -7,10 +7,12 @@ class HomeModule extends Module {
   @override
   void binds(i) {
     i.addLazySingleton<ILocalStorage>(LocalStorage.new);
+    i.addLazySingleton<IHomeRepository>(HomeRepository.new);
+    i.addLazySingleton<HomeStore>(HomeStore.new);
   }
 
   @override
   void routes(r) {
-    r.child(homeRoute, child: (context) => const HomePage());
+    r.child(homeRoute, child: (context) => HomePage());
   }
 }
