@@ -1,2 +1,2 @@
-export 'src/local_storage.interface.dart';
-export 'src/local_storage.dart';
+export 'local_storage.interface.dart';
+export 'local_storage.dart';

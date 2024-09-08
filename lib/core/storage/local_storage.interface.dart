@@ -1,6 +1,6 @@
 abstract interface class ILocalStorage {
-  Future save(String key, dynamic value);
+  Future save(String key, String value);
   Future delete(String key);
   Future clear();
-  String? getByKey(String key);
+  Future<String?> getByKey(String key);
 }

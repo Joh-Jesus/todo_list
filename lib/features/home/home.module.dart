@@ -13,6 +13,7 @@ class HomeModule extends Module {
 
   @override
   void routes(r) {
-    r.child(homeRoute, child: (context) => HomePage());
+    r.child(homeRoute, child: (context) => const HomePage());
+    r.child(createTodo, child: (context) => CreateTodoPage());
   }
 }

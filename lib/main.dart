@@ -7,7 +7,7 @@ import 'package:todo_list/utils/routes.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  Modular.setInitialRoute("$initRoute$homeRoute");
+  Modular.setInitialRoute("$appRoute$homeRoute");
   runApp(
     ScreenUtilInit(
       designSize: const Size(392, 783),
