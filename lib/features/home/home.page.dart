@@ -32,7 +32,6 @@ class _HomePageState extends State<HomePage> {
           style: TextStyle(color: Colors.white),
         )),
         backgroundColor: Colors.blue.shade900,
-        actions: const [FilterIconWidget()],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {

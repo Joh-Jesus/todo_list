@@ -65,6 +65,7 @@ abstract class _HomeStore with Store {
   @action
   Future checkTodo(String id, bool check) async {
     checkingLoading = true;
+    await Future.delayed(const Duration(milliseconds: 200), () {});
     try {
       final index = todos.indexWhere((element) => element.id == id);
       todos[index].done = check;

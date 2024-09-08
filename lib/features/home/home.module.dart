@@ -14,6 +14,9 @@ class HomeModule extends Module {
   @override
   void routes(r) {
     r.child(homeRoute, child: (context) => const HomePage());
-    r.child(createTodo, child: (context) => CreateTodoPage());
+    r.child(createTodo,
+        child: (context) => CreateTodoPage(),
+        transition: TransitionType.fadeIn,
+        duration: const Duration(milliseconds: 500));
   }
 }
