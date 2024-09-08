@@ -22,6 +22,9 @@ abstract class _HomeStore with Store {
   List<TodoModel> todos = <TodoModel>[];
 
   @observable
+  List<TodoModel> filteredTodos = [];
+
+  @observable
   HomeFilterStatus filterStatus = HomeFilterStatus.all;
 
   /// This method is responsible for fetching all Todos.
@@ -29,6 +32,7 @@ abstract class _HomeStore with Store {
   getTodos() async {
     loading = true;
     todos = await _repository.getTodos();
+    filterTodos();
     loading = false;
   }
 
@@ -40,6 +44,7 @@ abstract class _HomeStore with Store {
       todos.add(
           TodoModel(id: const Uuid().v4(), title: title, description: description, done: false));
       await _repository.updateTodo(todos);
+      filterTodos();
       Modular.to.pop();
       loading = false;
     } catch (e) {
@@ -64,6 +69,7 @@ abstract class _HomeStore with Store {
       final index = todos.indexWhere((element) => element.id == id);
       todos[index].done = check;
       await _repository.updateTodo(todos);
+      filterTodos();
       checkingLoading = false;
     } catch (e) {
       checkingLoading = false;
@@ -75,16 +81,21 @@ abstract class _HomeStore with Store {
   @action
   void updateStatus(HomeFilterStatus status) {
     filterStatus = status;
+    filterTodos();
   }
 
   /// This method is responsible for removing a Todo.
   @action
   Future removeTodo(String id) async {
+    if (loading) {
+      return;
+    }
     loading = true;
     try {
       final index = todos.indexWhere((element) => element.id == id);
       todos.removeAt(index);
       await _repository.updateTodo(todos);
+      filterTodos();
       loading = false;
     } catch (e) {
       loading = false;
@@ -93,15 +104,15 @@ abstract class _HomeStore with Store {
   }
 
   /// This method is responsible for filtering the Todos.
-  @computed
-  List<TodoModel> get filteredTodos {
+  @action
+  List<TodoModel> filterTodos() {
     switch (filterStatus) {
       case HomeFilterStatus.all:
-        return todos;
+        return filteredTodos = todos;
       case HomeFilterStatus.done:
-        return todos.where((element) => element.done).toList();
+        return filteredTodos = todos.where((element) => element.done).toList();
       case HomeFilterStatus.undone:
-        return todos.where((element) => !element.done).toList();
+        return filteredTodos = todos.where((element) => !element.done).toList();
     }
   }
 }
