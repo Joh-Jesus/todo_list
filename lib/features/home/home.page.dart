@@ -27,11 +27,12 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Center(
-            child: Text(
-          "Lista de tarefas",
-          style: TextStyle(color: Colors.white),
-        )),
-        backgroundColor: Colors.blue.shade900,
+          child: Text(
+            "Lista de tarefas",
+            style: TextStyle(fontWeight: FontWeight.w600, color: Colors.black87),
+          ),
+        ),
+        backgroundColor: Colors.white54,
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -43,6 +44,7 @@ class _HomePageState extends State<HomePage> {
           color: Colors.white,
         ),
       ),
+      backgroundColor: Colors.grey.shade50,
       body: Observer(
         builder: (BuildContext context) {
           return Padding(

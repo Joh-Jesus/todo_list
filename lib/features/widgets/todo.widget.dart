@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -28,7 +27,7 @@ class _TodoWidgetState extends State<TodoWidget> {
         return AnimatedContainer(
           decoration:
               BoxDecoration(color: Colors.grey.shade100, borderRadius: BorderRadius.circular(8.r)),
-          duration: 300.ms,
+          duration: const Duration(milliseconds: 300),
           height: store.checkingLoading ? 30.h : 45.h,
           child: Row(
             children: [
@@ -83,7 +82,7 @@ class _TodoWidgetState extends State<TodoWidget> {
                   color: Colors.red,
                 ),
                 crossFadeState: deleted ? CrossFadeState.showSecond : CrossFadeState.showFirst,
-                duration: 200.ms,
+                duration: const Duration(milliseconds: 200),
                 firstCurve: Curves.bounceIn,
                 secondCurve: Curves.bounceOut,
               )

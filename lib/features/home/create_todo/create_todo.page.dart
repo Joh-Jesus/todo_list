@@ -15,7 +15,10 @@ class CreateTodoPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Criar Todo"),
+        title: const Text(
+          "Criar uma Tarefa",
+          style: TextStyle(fontWeight: FontWeight.w600, color: Colors.black87),
+        ),
       ),
       body: Observer(builder: (context) {
         return Padding(
